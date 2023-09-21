@@ -23,6 +23,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         if (e.response?.statusCode == 422) {
           emit(RegisterStateWrongFormat());
         } else if (e.response?.statusCode == 404) {
+
           emit(RegisterStateUserNotFound());
         } else {
           (emit(RegisterStateNetworkError()));
