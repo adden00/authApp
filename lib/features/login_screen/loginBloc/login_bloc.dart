@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_auth/common/Constants.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/loginEvent.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/loginState.dart';
+import 'package:flutter_auth/features/login_screen/loginBloc/login_event.dart';
+import 'package:flutter_auth/features/login_screen/loginBloc/login_state.dart';
 import 'package:flutter_auth/features/login_screen/loginBloc/login_effect.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -33,7 +33,6 @@ class LoginBloc extends SideEffectBloc<LoginEvent, LoginState, LoginEffect> {
     });
     on<LoginEventIncorrectData>((event, emit) {
       emit(LoginStateInputting());
-      // emit(LoginStateIncorrectDataError());
     });
   }
 

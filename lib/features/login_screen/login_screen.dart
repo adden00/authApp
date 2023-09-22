@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/loginBloc.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/loginEvent.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/loginState.dart';
+import 'package:flutter_auth/features/login_screen/loginBloc/login_bloc.dart';
+import 'package:flutter_auth/features/login_screen/loginBloc/login_event.dart';
+import 'package:flutter_auth/features/login_screen/loginBloc/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';

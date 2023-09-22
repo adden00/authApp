@@ -11,7 +11,7 @@ class UserTile extends StatelessWidget {
     return ListTile(
       title: Text(userInfo.name),
       subtitle: Text(userInfo.email),
-      leading: Image.network(userInfo.profilePhotoUrl),
+      leading: const Icon(Icons.person),
 
     );
   }

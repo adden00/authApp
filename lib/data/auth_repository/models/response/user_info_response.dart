@@ -5,7 +5,7 @@ class UserInfo {
   final String name;
   final String email;
   final String createdAt;
-  final String profilePhotoUrl = "https://ui-avatars.com/api/?background=0D8ABC&color=fff";
+  final String profilePhotoUrl = "http://bishelp.ru/sites/default/files/imagecache/avatar-list/user/main/780-7804962_cartoon-avatar-png-image-transparent-avatar-user-image.png";
 
   UserInfo.fromJson(Map<String, dynamic> json)
       : id = json["id"],

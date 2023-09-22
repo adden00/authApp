@@ -30,43 +30,56 @@ class _ProfileState extends State<Profile> {
         appBar: AppBar(
           title: const Text("you are sign in"),
         ),
-        body: BlocBuilder<ProfileBloc, ProfileState>(
-          bloc: profileBloc,
-          builder: (context, state) {
-            if (state is ProfileStateLoaded) {
-              return Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.network(state.userInfo.profilePhotoUrl),
-                  Text(state.userInfo.name),
-                  Text(state.userInfo.email),
-                  Text(state.userInfo.createdAt),
-                  TextButton(
-                      onPressed: () {
-                        profileBloc.add(LogOutEvent());
-                        Navigator.of(context).pushNamedAndRemoveUntil("/", (R)=>false);
-                      },
-                      child: const Text("exit")),
-                  Container(height: 50,),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed("/all_users");
-                      },
-                  child: const Text("All users"),)
-                ],
-              ));
-            }
-            if (state is ProfileStateLoading) {
-                return const Center(child: CircularProgressIndicator());
-              }
-            if (state is ProfileStateError) {
-              return Text("load error: ${state.error}");
-            }
-            else {
-              return const Text("");
-            }
-          },
-        ));
+        body: RefreshIndicator(
+            onRefresh: () async {
+              profileBloc.add(LoadUserDataEvent());
+            },
+            child: Stack(
+              children: <Widget>[
+                ListView(),
+                BlocBuilder<ProfileBloc, ProfileState>(
+                  bloc: profileBloc,
+                  builder: (context, state) {
+                    if (state is ProfileStateLoaded) {
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.person),
+                            Text(state.userInfo.name),
+                            Text(state.userInfo.email),
+                            Text(state.userInfo.createdAt),
+                            TextButton(
+                                onPressed: () {
+                                  profileBloc.add(LogOutEvent());
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      "/", (R) => false);
+                                },
+                                child: const Text("exit")),
+                            Container(
+                              height: 50,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed("/all_users");
+                              },
+                              child: const Text("All users"),
+                            )
+                          ],
+                        ),
+                      );
+                    }
+                    if (state is ProfileStateLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (state is ProfileStateError) {
+                      return Text("load error: ${state.error}");
+                    } else {
+                      return Text(state.toString());
+                    }
+                  },
+                )
+              ],
+            )));
   }
 }
