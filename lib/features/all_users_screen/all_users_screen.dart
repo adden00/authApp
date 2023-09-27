@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/all_users_screen/all_users_bloc/all_users_bloc.dart';
-import 'package:flutter_auth/features/all_users_screen/all_users_bloc/all_users_event.dart';
-import 'package:flutter_auth/features/all_users_screen/all_users_bloc/all_users_state.dart';
-import 'package:flutter_auth/features/all_users_screen/user_tile.dart';
+import 'package:flutter_auth/features/all_users_screen/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 

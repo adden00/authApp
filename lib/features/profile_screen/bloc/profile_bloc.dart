@@ -1,11 +1,11 @@
-
 import 'package:flutter_auth/common/Constants.dart';
-import 'package:flutter_auth/data/auth_repository/auth_repository_abstract.dart';
+import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_auth/features/profile_screen/bloc/profile_event.dart';
-import 'package:flutter_auth/features/profile_screen/bloc/profile_state.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+
+part 'profile_event.dart';
+part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc(this.repository) : super(ProfileStateInitial()) {

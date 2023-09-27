@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/profile_screen/bloc/profile_bloc.dart';
-import 'package:flutter_auth/features/profile_screen/bloc/profile_event.dart';
-import 'package:flutter_auth/features/profile_screen/bloc/profile_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../data/auth_repository/auth_repository_abstract.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

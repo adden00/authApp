@@ -1,4 +1,5 @@
-import 'models/models.dart';
+
+import 'auth_repository.dart';
 
 abstract class AuthRepositoryAbstract {
 

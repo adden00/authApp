@@ -1,5 +1,5 @@
+part of "profile_bloc.dart";
 
-import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 
 abstract class ProfileState{}
 

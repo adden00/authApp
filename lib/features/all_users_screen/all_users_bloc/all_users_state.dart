@@ -1,4 +1,4 @@
-import '../../../data/auth_repository/models/models.dart';
+part of "all_users_bloc.dart";
 
 abstract class AllUsersState {}
 

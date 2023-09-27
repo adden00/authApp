@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/register_screen/register_bloc/register_bloc.dart';
-import 'package:flutter_auth/features/register_screen/register_bloc/register_effect.dart';
-import 'package:flutter_auth/features/register_screen/register_bloc/register_event.dart';
-import 'package:flutter_auth/features/register_screen/register_bloc/register_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
@@ -60,7 +57,7 @@ class _State extends State<RegisterScreen> {
                     TextField(
                       controller: nameText,
                       decoration: InputDecoration(
-                          hintText: "name:",
+                          labelText: "name:",
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide:
@@ -73,7 +70,7 @@ class _State extends State<RegisterScreen> {
                         errorEmailText = "";
                       },
                       decoration: InputDecoration(
-                          hintText: "email:",
+                          labelText: "email:",
                           errorText:
                               errorEmailText == "" ? null : errorEmailText,
                           border: OutlineInputBorder(
@@ -91,7 +88,7 @@ class _State extends State<RegisterScreen> {
                       enableSuggestions: false,
                       autocorrect: false,
                       decoration: InputDecoration(
-                          hintText: "password:",
+                          labelText: "password:",
                           errorText: errorPasswordText.isEmpty
                               ? null
                               : errorPasswordText,
@@ -107,7 +104,7 @@ class _State extends State<RegisterScreen> {
                       enableSuggestions: false,
                       autocorrect: false,
                       decoration: InputDecoration(
-                          hintText: "confirm password:",
+                          labelText: "confirm password:",
                           errorText: errorConfirmPasswordText == ""
                               ? null
                               : errorConfirmPasswordText,
@@ -118,8 +115,7 @@ class _State extends State<RegisterScreen> {
                     ),
                     TextButton(
                       style: ButtonStyle(
-                          textStyle: MaterialStateProperty.all(
-                              const TextStyle(color: Colors.black))),
+                          foregroundColor: MaterialStateProperty.all(Colors.blue)),
                       onPressed: () {
                         bool flag = true;
                         if (passwordText.text.length < 8) {
@@ -147,6 +143,8 @@ class _State extends State<RegisterScreen> {
                           registerBloc.add(RegisterEventIncorrectData());
                         }
                       },
+
+
                       child: const Text("Register"),
                     )
                   ],

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/login_screen/loginBloc/login_bloc.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/login_event.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
-
-import '../../data/auth_repository/auth_repository.dart';
-import 'loginBloc/login_effect.dart';
+import 'package:get_it/get_it.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -64,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         controller: emailText,
                         decoration: InputDecoration(
-                            hintText: "email:",
+                            labelText: "email:",
                             errorText:
                                 errorEmailText.isEmpty ? null : errorEmailText,
                             border: OutlineInputBorder(
@@ -84,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         enableSuggestions: false,
                         autocorrect: false,
                         decoration: InputDecoration(
-                            hintText: "password:",
+                            labelText: "password:",
                             errorText: errorPasswordText.isEmpty
                                 ? null
                                 : errorPasswordText,
@@ -118,6 +114,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             loginBloc.add(LoginEventIncorrectData());
                           }
                         },
+                        style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all(Colors.blue)
+                        ),
                         child: const Text("Log in"),
                       )
                     ],

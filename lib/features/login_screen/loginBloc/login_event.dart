@@ -1,6 +1,4 @@
-
-
-import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
+part of "login_bloc.dart";
 
 abstract class LoginEvent {}
 

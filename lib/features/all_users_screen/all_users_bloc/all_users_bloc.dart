@@ -1,11 +1,11 @@
-
 import 'package:flutter_auth/common/Constants.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
-import 'package:flutter_auth/features/all_users_screen/all_users_bloc/all_users_event.dart';
-import 'package:flutter_auth/features/all_users_screen/all_users_bloc/all_users_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+
+part 'all_users_event.dart';
+part 'all_users_state.dart';
 
 class AllUsersBloc extends Bloc<AllUsersEvent, AllUsersState> {
   final storage = GetIt.I<FlutterSecureStorage>();

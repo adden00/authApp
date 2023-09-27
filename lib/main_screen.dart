@@ -15,13 +15,13 @@ class MainScreen extends StatelessWidget {
 
 
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Registration"))),
+      appBar: AppBar(title: const Center(child: Text("Authentication"))),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const FlutterLogo(
-              size: 200,
+              size: 100,
             ),
             Container(
               height: 10,

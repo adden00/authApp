@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_auth/common/Constants.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
-import 'package:flutter_auth/features/register_screen/register_bloc/register_effect.dart';
-import 'package:flutter_auth/features/register_screen/register_bloc/register_event.dart';
-import 'package:flutter_auth/features/register_screen/register_bloc/register_state.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 
-import '../../../common/Constants.dart';
+
+part 'register_effect.dart';
+part 'register_event.dart';
+part 'register_state.dart';
 
 class RegisterBloc extends SideEffectBloc<RegisterEvent, RegisterState, RegisterEffect> {
   RegisterBloc(this.repository) : super(RegisterStateInitial()) {
@@ -25,7 +27,7 @@ class RegisterBloc extends SideEffectBloc<RegisterEvent, RegisterState, Register
           emit(RegisterStateInputting());
 
         } else {
-          produceSideEffect(RegisterEffectShowSnackbar("newtwork error!"));
+          produceSideEffect(RegisterEffectShowSnackbar("network error!"));
         }
       }
       emit(RegisterStateInputting());

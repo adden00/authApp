@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_auth/common/constants.dart';
-
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepositoryAbstract {

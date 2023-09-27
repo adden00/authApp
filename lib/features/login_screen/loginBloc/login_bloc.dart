@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_auth/common/Constants.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/login_event.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/login_state.dart';
-import 'package:flutter_auth/features/login_screen/loginBloc/login_effect.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
+
+part "login_effect.dart";
+part 'login_event.dart';
+part 'login_state.dart';
 
 class LoginBloc extends SideEffectBloc<LoginEvent, LoginState, LoginEffect> {
   final storage = GetIt.I<FlutterSecureStorage>();

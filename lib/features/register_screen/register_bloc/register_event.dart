@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
+part of 'register_bloc.dart';
+
 
 abstract class RegisterEvent extends Equatable {}
 
