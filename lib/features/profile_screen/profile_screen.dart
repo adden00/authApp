@@ -37,6 +37,8 @@ class _ProfileState extends State<Profile> {
                   bloc: profileBloc,
                   builder: (context, state) {
                     if (state is ProfileStateLoaded) {
+                      final createDate =
+                          DateTime.parse(state.userInfo.createdAt);
                       return Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +46,8 @@ class _ProfileState extends State<Profile> {
                             const Icon(Icons.person),
                             Text(state.userInfo.name),
                             Text(state.userInfo.email),
-                            Text(state.userInfo.createdAt),
+                            Text(
+                                "created: ${createDate.day < 10 ? "0${createDate.day}" : createDate.day}.${createDate.month < 10 ? "0${createDate.month}" : createDate.month}.${createDate.year}"),
                             TextButton(
                                 onPressed: () {
                                   profileBloc.add(LogOutEvent());
