@@ -1,16 +1,16 @@
 # flutter_auth
 
-A new Flutter project.
+Flutter authorisation app. 
+Основные функции:
+- создание нового аккаунта (с проверками корректности введенных данных)
+- вход в существующий аккаунт и сохранение токена в secure storrage для последующих входов
+- просмотр данных профиля
+- просмотр всех существующих пользователей
 
-## Getting Started
+Используемые технологии:
+- архитектурно приложение разбито по фичам, с отдельным bloC для каждой фичи. Запросы в сеть о secure storrage производятся через репозиторий и вынесены в data слой
+- http запросы производятся с использованием dio, и дальнейшей сериализацией из json
+- для DI используется библиотека GetIt
+- навигация осуществляется с помощью named routes через Navigator
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
