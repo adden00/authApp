@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/login_screen/loginBloc/login_bloc.dart';
+import 'package:flutter_auth/navigation/navigation_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -14,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final loginBloc = LoginBloc(GetIt.I<AuthRepositoryAbstract>());
+  final navManager = GetIt.I<NavigationManager>();
 
   var emailText = TextEditingController();
   var passwordText = TextEditingController();
@@ -34,8 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               showSnackBar(effect.message, context);
             }
             if (effect is LoginEffectSuccess) {
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil("/profile", (r) => false);
+              navManager.navToProfile();
             }
           },
           child: BlocBuilder<LoginBloc, LoginState>(

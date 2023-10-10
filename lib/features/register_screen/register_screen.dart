@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/register_screen/register_bloc/register_bloc.dart';
+import 'package:flutter_auth/navigation/navigation_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
@@ -15,10 +16,10 @@ class RegisterScreen extends StatefulWidget {
 class _State extends State<RegisterScreen> {
   final repository = GetIt.I<AuthRepositoryAbstract>();
   final registerBloc = RegisterBloc(GetIt.I<AuthRepositoryAbstract>());
+  final navManager = GetIt.I<NavigationManager>();
 
   @override
   Widget build(BuildContext context) {
-    // final storage = GetIt.I<FlutterSecureStorage>();
     var nameText = TextEditingController();
     var emailText = TextEditingController();
     var passwordText = TextEditingController();
@@ -38,8 +39,7 @@ class _State extends State<RegisterScreen> {
               showSnackBar(effect.message, context);
             }
             if (effect is RegisterEffectSuccess) {
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil("/profile", (r) => false);
+              navManager.navToProfile();
             }
           },
           child: BlocBuilder<RegisterBloc, RegisterState>(

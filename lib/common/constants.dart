@@ -1,5 +1,6 @@
 
 const WIFI_IP_HOME = "192.168.1.74";
-const WIFI_IP = WIFI_IP_HOME;
+const WIFI_IP_PHONE = "192.168.153.114";
+const WIFI_IP = WIFI_IP_PHONE;
 const SUCCESS_AUTH_NAME = "001";
 const TOKEN_KEY = "003";

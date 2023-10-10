@@ -4,11 +4,13 @@ import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'MyApp.dart';
+import 'navigation/navigation_manager.dart';
 
 
 void main() {
   GetIt.I.registerLazySingleton<AuthRepositoryAbstract>(() => AuthRepositoryImpl(dio: Dio()));
   GetIt.I.registerLazySingleton(() => const FlutterSecureStorage());
+  GetIt.I.registerLazySingleton(() => NavigationManager());
   runApp(const MyApp());
 }
 

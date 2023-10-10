@@ -4,15 +4,28 @@ import 'package:flutter_auth/common/Constants.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
-class MainScreen extends StatelessWidget {
+import 'navigation/navigation_manager.dart';
+
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+
+  final storage = GetIt.I<FlutterSecureStorage>();
+  final navManager = GetIt.I<NavigationManager>();
+
+  @override
+  void didChangeDependencies() {
+    trySignIn(context, storage);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final storage = GetIt.I<FlutterSecureStorage>();
-    navigate(context, storage);
-
 
     return Scaffold(
       appBar: AppBar(title: const Center(child: Text("Authentication"))),
@@ -34,7 +47,7 @@ class MainScreen extends StatelessWidget {
                         foregroundColor:
                             MaterialStateProperty.all(Colors.blue)),
                     onPressed: () {
-                      Navigator.of(context).pushNamed("/register");
+                      navManager.navToRegister();
                     },
                     child: const Text("register")),
                 Container(
@@ -47,9 +60,9 @@ class MainScreen extends StatelessWidget {
                     onPressed: () async {
                       final token = await storage.read(key: TOKEN_KEY);
                       if (token != null) {
-                        Navigator.of(context).pushNamed("/success");
+                        navManager.navToProfile();
                       } else {
-                        Navigator.of(context).pushNamed("/login");
+                        navManager.navToLogin();
                       }
                     },
                     child: const Text("log in"))
@@ -61,10 +74,10 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  void navigate(BuildContext context, FlutterSecureStorage storage) async {
+  void trySignIn(BuildContext context, FlutterSecureStorage storage) async {
     final token = await storage.read(key: TOKEN_KEY);
     if (token != null) {
-      Navigator.of(context).pushNamedAndRemoveUntil("/profile", (r)=>false);
+      navManager.navToProfile();
     }
   }
 }

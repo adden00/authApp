@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/features/register_screen/register_screen.dart';
-import 'package:flutter_auth/router/routes.dart';
+import 'package:flutter_auth/navigation/navigation_manager.dart';
+import 'package:flutter_auth/navigation/routes.dart';
 import 'package:flutter_auth/theme/theme.dart';
-
-import 'main_screen.dart';
+import 'package:get_it/get_it.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      routes: routes,
+      navigatorKey: GetIt.I<NavigationManager>().key,
+      routes: RoutesBuilder.routes,
+      initialRoute: RouteNames.initial,
     );
   }
 }

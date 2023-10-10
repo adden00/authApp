@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/profile_screen/bloc/profile_bloc.dart';
+import 'package:flutter_auth/navigation/navigation_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileScreenState extends State<ProfileScreen> {
   final profileBloc = ProfileBloc(GetIt.I<AuthRepositoryAbstract>());
+  final navManager = GetIt.I<NavigationManager>();
 
   @override
   void initState() {
@@ -51,8 +53,7 @@ class _ProfileState extends State<Profile> {
                             TextButton(
                                 onPressed: () {
                                   profileBloc.add(LogOutEvent());
-                                  Navigator.of(context).pushNamedAndRemoveUntil(
-                                      "/", (R) => false);
+                                  navManager.returnToHome();
                                 },
                                 child: const Text("exit")),
                             Container(
@@ -60,7 +61,7 @@ class _ProfileState extends State<Profile> {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).pushNamed("/all_users");
+                                navManager.navToAllUsers();
                               },
                               child: const Text("All users"),
                             )
