@@ -1,4 +1,4 @@
-import 'package:flutter_auth/common/Constants.dart';
+import 'package:flutter_auth/common/constants.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -13,7 +13,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(ProfileStateLoading());
       try {
         final storage = GetIt.I<FlutterSecureStorage>();
-        final token = await storage.read(key: TOKEN_KEY);
+        final token = await storage.read(key: Constants.TOKEN_KEY);
         if (token != null){
           final userData = await repository.getUserInfo(token);
           emit(ProfileStateLoaded(userData));
@@ -29,7 +29,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
     on<LogOutEvent>((event, emit) async {
       final storage = GetIt.I<FlutterSecureStorage>();
-      await storage.delete(key: TOKEN_KEY);
+      await storage.delete(key: Constants.TOKEN_KEY);
     });
 
 

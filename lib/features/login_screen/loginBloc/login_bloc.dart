@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_auth/common/Constants.dart';
+import 'package:flutter_auth/common/constants.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -17,7 +17,7 @@ class LoginBloc extends SideEffectBloc<LoginEvent, LoginState, LoginEffect> {
       emit(LoginStateLoading());
       try {
         final result = await repository.logIn(event.loginData);
-        await storage.write(key: TOKEN_KEY, value: result.data!.token);
+        await storage.write(key: Constants.TOKEN_KEY, value: result.data!.token);
         produceSideEffect(LoginEffectSuccess());
 
       } on DioError catch (e) {

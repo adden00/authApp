@@ -1,4 +1,4 @@
-import 'package:flutter_auth/common/Constants.dart';
+import 'package:flutter_auth/common/constants.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -13,7 +13,7 @@ class AllUsersBloc extends Bloc<AllUsersEvent, AllUsersState> {
     on<AllUsersEventLoadUsers>((event, emit) async {
       emit(AllUsersStateLoading());
       try {
-        final token = await storage.read(key: TOKEN_KEY);
+        final token = await storage.read(key: Constants.TOKEN_KEY);
         if (token != null){
           final users = await repository.getAllUsers(token);
           emit(AllUsersStateLoaded(users));

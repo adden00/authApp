@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/common/ui/spacer.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/register_screen/register_bloc/register_bloc.dart';
 import 'package:flutter_auth/navigation/navigation_manager.dart';
@@ -14,7 +15,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _State extends State<RegisterScreen> {
-  final repository = GetIt.I<AuthRepositoryAbstract>();
   final registerBloc = RegisterBloc(GetIt.I<AuthRepositoryAbstract>());
   final navManager = GetIt.I<NavigationManager>();
 
@@ -63,7 +63,7 @@ class _State extends State<RegisterScreen> {
                               borderSide:
                                   const BorderSide(color: Colors.black))),
                     ),
-                    Container(height: 10),
+                    const VerticalSpacer(),
                     TextField(
                       controller: emailText,
                       onChanged: (text) {
@@ -78,7 +78,7 @@ class _State extends State<RegisterScreen> {
                               borderSide:
                                   const BorderSide(color: Colors.black))),
                     ),
-                    Container(height: 10),
+                    const VerticalSpacer(),
                     TextField(
                       controller: passwordText,
                       onChanged: (text) {
@@ -97,7 +97,7 @@ class _State extends State<RegisterScreen> {
                               borderSide:
                                   const BorderSide(color: Colors.black))),
                     ),
-                    Container(height: 10),
+                    const VerticalSpacer(),
                     TextField(
                       controller: confirmPasswordText,
                       obscureText: true,

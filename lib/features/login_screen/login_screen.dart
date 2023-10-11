@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/common/ui/spacer.dart';
 import 'package:flutter_auth/data/auth_repository/auth_repository.dart';
 import 'package:flutter_auth/features/login_screen/loginBloc/login_bloc.dart';
 import 'package:flutter_auth/navigation/navigation_manager.dart';
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderSide:
                                     const BorderSide(color: Colors.black))),
                       ),
-                      Container(height: 10),
+                      const VerticalSpacer(),
                       TextField(
                         onChanged: (value) {
                           setState(() {
@@ -90,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderSide:
                                     const BorderSide(color: Colors.black))),
                       ),
-                      Container(height: 10),
+                      const VerticalSpacer(),
                       TextButton(
                         onPressed: () {
                           bool flag = true;

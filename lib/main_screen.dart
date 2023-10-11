@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/common/Constants.dart';
+import 'package:flutter_auth/common/constants.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
@@ -58,7 +57,7 @@ class _MainScreenState extends State<MainScreen> {
                         foregroundColor:
                             MaterialStateProperty.all(Colors.blue)),
                     onPressed: () async {
-                      final token = await storage.read(key: TOKEN_KEY);
+                      final token = await storage.read(key: Constants.TOKEN_KEY);
                       if (token != null) {
                         navManager.navToProfile();
                       } else {
@@ -75,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void trySignIn(BuildContext context, FlutterSecureStorage storage) async {
-    final token = await storage.read(key: TOKEN_KEY);
+    final token = await storage.read(key: Constants.TOKEN_KEY);
     if (token != null) {
       navManager.navToProfile();
     }

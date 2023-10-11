@@ -16,7 +16,7 @@ class AuthRepositoryImpl implements AuthRepositoryAbstract {
       "password_confirmation": registerData.confirmPassword
     });
 
-    final response = await dio.post("http://$WIFI_IP/mobile/register",
+    final response = await dio.post("http://${Constants.WIFI_IP}/mobile/register",
         data: formData,
         options: Options(headers: {
           "Content-Type": "multipart/form-data",
@@ -44,7 +44,7 @@ class AuthRepositoryImpl implements AuthRepositoryAbstract {
     final FormData formData = FormData.fromMap(
         {"email": logInData.email, "password": logInData.password});
 
-    final response = await dio.post("http://$WIFI_IP/mobile/login",
+    final response = await dio.post("http://${Constants.WIFI_IP}/mobile/login",
         data: formData,
         options: Options(headers: {
           "Content-Type": "multipart/form-data",
@@ -71,7 +71,7 @@ class AuthRepositoryImpl implements AuthRepositoryAbstract {
 
   @override
   Future<UserInfo> getUserInfo(String token) async {
-    final response = await dio.get("http://$WIFI_IP/api/user",
+    final response = await dio.get("http://${Constants.WIFI_IP}/api/user",
         options: Options(headers: {
           "Authorization": "Bearer $token",
           "Accept": "application/json"
@@ -82,7 +82,7 @@ class AuthRepositoryImpl implements AuthRepositoryAbstract {
 
   @override
   Future<List<UserInfo>> getAllUsers(String token) async {
-    final response = await dio.get("http://$WIFI_IP/mobile/users",
+    final response = await dio.get("http://${Constants.WIFI_IP}/mobile/users",
         options: Options(headers: {
           "Authorization": "Bearer $token",
           "Accept": "application/json"
